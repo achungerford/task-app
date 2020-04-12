@@ -10,10 +10,11 @@ const connectionURL = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-app';
 
 // connect to server
-MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
+MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: true }, (error, client) => {
     if (error) {
         return console.log('Unable to connect to database.');
     }
 
     console.log('Connected correctly');
 })
+
