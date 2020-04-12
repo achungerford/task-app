@@ -1,8 +1,8 @@
 // /c/Users/Alexander/mongodb/bin/mongod.exe --dbpath=/c/Users/Alexander/mongodb-data
 // "C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath=/c/Users/Alexander/mongodb-data
 
-// modules
-const mongodb = require('mongodb');
+// installed npm modules
+const mongodb = require('mongodb');     // a native driver created by mongoDB company
 const MongoClient = mongodb.MongoClient;
 
 // define connections
@@ -15,13 +15,20 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
         return console.log('Unable to connect to database.');
     }
 
-    // creating a database reference
+    // creating a connection for a specific database
     const db = client.db(databaseName);
 
     // insert a single document into a collection called 'users'
     db.collection('users').insertOne({
         name: 'Andrew',
         age: 27
+    }, (error, result) => {
+        if (error) {
+            return console.log('Unable to insert user.');
+        }
+
+        console.log(result.ops);
     })
+
 })
 
