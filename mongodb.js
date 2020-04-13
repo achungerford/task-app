@@ -31,18 +31,38 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     // })
 
     
-    // how to bulk-insert documents into a collection
-    db.collection('users').insertMany([
+//    // how to bulk-insert documents into a collection
+    // db.collection('users').insertMany([
+    //     {
+    //         name: 'Jen',
+    //         age: 28
+    //     }, {
+    //         name: 'Alex',
+    //         age: 30
+    //     }
+    // ], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert documents');
+    //     }
+
+    //     console.log(result.ops);
+    // })
+
+
+    db.collection('tasks').insertMany([
         {
-            name: 'Jen',
-            age: 28
+            description: 'Eat breakfast',
+            completed: true
         }, {
-            name: 'Alex',
-            age: 30
+            description: 'Make lunch',
+            completed: true
+        }, {
+            description: 'Cook dinner',
+            completed: false
         }
     ], (error, result) => {
         if (error) {
-            return console.log('Unable to insert documents');
+            return console.log('Unable to insert tasks!');
         }
 
         console.log(result.ops);
