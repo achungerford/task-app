@@ -18,17 +18,34 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     // creating a connection for a specific database
     const db = client.db(databaseName);
 
-    // insert a single document into a collection called 'users'
-    db.collection('users').insertOne({
-        name: 'Andrew',
-        age: 27
-    }, (error, result) => {
+    // // insert a single document into a collection called 'users'
+    // db.collection('users').insertOne({
+    //     name: 'Andrew',
+    //     age: 27
+    // }, (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert user.');
+    //     }
+
+    //     console.log(result.ops);
+    // })
+
+    
+    // how to bulk-insert documents into a collection
+    db.collection('users').insertMany([
+        {
+            name: 'Jen',
+            age: 28
+        }, {
+            name: 'Alex',
+            age: 30
+        }
+    ], (error, result) => {
         if (error) {
-            return console.log('Unable to insert user.');
+            return console.log('Unable to insert documents');
         }
 
         console.log(result.ops);
     })
-
 })
 
