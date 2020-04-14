@@ -4,6 +4,7 @@
 // installed npm modules
 const mongodb = require('mongodb');     // a native driver created by mongoDB company
 const MongoClient = mongodb.MongoClient;
+const ObjectID = mongodb.ObjectID;
 
 // define connections
 const connectionURL = 'mongodb://127.0.0.1:27017';
@@ -49,23 +50,23 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     // })
 
 
-    db.collection('tasks').insertMany([
-        {
-            description: 'Eat breakfast',
-            completed: true
-        }, {
-            description: 'Make lunch',
-            completed: true
-        }, {
-            description: 'Cook dinner',
-            completed: false
-        }
-    ], (error, result) => {
-        if (error) {
-            return console.log('Unable to insert tasks!');
-        }
+    // db.collection('tasks').insertMany([
+    //     {
+    //         description: 'Eat breakfast',
+    //         completed: true
+    //     }, {
+    //         description: 'Make lunch',
+    //         completed: true
+    //     }, {
+    //         description: 'Cook dinner',
+    //         completed: false
+    //     }
+    // ], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert tasks!');
+    //     }
 
-        console.log(result.ops);
-    })
+    //     console.log(result.ops);
+    // })
 })
 
