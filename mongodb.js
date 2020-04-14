@@ -1,10 +1,8 @@
 // /c/Users/Alexander/mongodb/bin/mongod.exe --dbpath=/c/Users/Alexander/mongodb-data
 // "C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath=/c/Users/Alexander/mongodb-data
 
-// installed npm modules
-const mongodb = require('mongodb');     // a native driver created by mongoDB company
-const MongoClient = mongodb.MongoClient;
-const ObjectID = mongodb.ObjectID;
+// destructuring
+const { MongoClient, ObjectID } = require('mongodb');
 
 // define connections
 const connectionURL = 'mongodb://127.0.0.1:27017';
