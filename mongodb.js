@@ -8,6 +8,10 @@ const { MongoClient, ObjectID } = require('mongodb');
 const connectionURL = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-app';
 
+// generate ObjectIDs
+const id = new ObjectID();
+console.log(id);
+
 // connect to server
 MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: true }, (error, client) => {
     if (error) {
@@ -17,17 +21,18 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     // creating a connection for a specific database
     const db = client.db(databaseName);
 
-    // // insert a single document into a collection called 'users'
-    // db.collection('users').insertOne({
-    //     name: 'Andrew',
-    //     age: 27
-    // }, (error, result) => {
-    //     if (error) {
-    //         return console.log('Unable to insert user.');
-    //     }
+    // insert a single document into a collection called 'users'
+    db.collection('users').insertOne({
+        _id: id,
+        name: 'Obama',
+        age: 58
+    }, (error, result) => {
+        if (error) {
+            return console.log('Unable to insert user.');
+        }
 
-    //     console.log(result.ops);
-    // })
+        console.log(result.ops);
+    })
 
     
 //    // how to bulk-insert documents into a collection
