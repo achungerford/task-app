@@ -8,9 +8,6 @@ const { MongoClient, ObjectID } = require('mongodb');
 const connectionURL = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-app';
 
-// generate ObjectIDs
-const id = new ObjectID();
-console.log(id);
 
 // connect to server
 MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: true }, (error, client) => {
@@ -23,7 +20,6 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
 
     // insert a single document into a collection called 'users'
     db.collection('users').insertOne({
-        _id: id,
         name: 'Obama',
         age: 58
     }, (error, result) => {
