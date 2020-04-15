@@ -35,5 +35,15 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
         
         console.log(users);
     })
+    
+    
+    // demonstrating that 'find' returns a 'cursor' (i.e. a pointer) to our data
+    db.collection('users').find({ age: 27 }).count((error, count) => {
+        if (error) {
+            return console.log('Unable to retrieve data.');
+        }
+
+        console.log(count);
+    })
 })
 
