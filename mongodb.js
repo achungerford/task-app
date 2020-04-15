@@ -19,7 +19,7 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     const db = client.db(databaseName);
 
     // retrieving data from the database
-    db.collection('users').findOne({ name: 'Jen'}, (error, user) => {
+    db.collection('users').findOne({ name: 'Jen', age: 1 }, (error, user) => {
         if (error) {
             return console.log('Unable to retreive data.');
         }
