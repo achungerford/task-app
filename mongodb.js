@@ -26,5 +26,14 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
 
         console.log(user);
     })
+
+    // retrieving more than one document from the database - 'find'
+    db.collection('users').find({ age: 27 }).toArray((error, users) => {
+        if (error) {
+            return console.log('Unable to retrieve data.');
+        }
+        
+        console.log(users);
+    })
 })
 
