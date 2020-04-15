@@ -18,6 +18,19 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     // creating a connection for a specific database
     const db = client.db(databaseName);
 
-    
-})
+    // updating user name; updateOne returns a promise if no callback provided
+    // so we can save this code as 'updatePromise'
+    const updatePromise = db. collection('users').updateOne({
+        _id: new ObjectID("5e93db39b92a0d1864aad5c9")
+    }, {
+        $set: {
+            name: 'Mike'
+        }
+    })
 
+    updatePromise.then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
+    })
+})
