@@ -31,4 +31,17 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
     }).catch((error) => {
         console.log(error);
     })
+
+    // demonstrate update many to complete tasks
+    db.collection('tasks').updateMany({
+        completed: false
+    }, {
+        $set: {
+            completed: true
+        }
+    }).then((result) => {
+        console.log(result.modifiedCount);
+    }).catch((error) => {
+        console.log(error);
+    })
 })
