@@ -47,11 +47,20 @@ MongoClient.connect(connectionURL, { useUnifiedTopology: true, useNewUrlParser: 
 
 
     // demonstrating DELETE in MongoDB
-    db.collection('users').deleteMany({
-        age: 30
+    // db.collection('users').deleteMany({
+    //     age: 30
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+    // CHALLENGE
+    db.collection('tasks').deleteOne({
+        description: "Eat breakfast"
     }).then((result) => {
-        console.log(result)
+        console.log(result);
     }).catch((error) => {
-        console.log(error)
+        console.log(error);
     })
 })
