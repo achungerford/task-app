@@ -7,3 +7,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-app-api', {
     useNewUrlParser: true,
     useCreateIndex: true
 })
+
+// define our first model - basic version of 'user' model
+const User = mongoose.model('User', {
+    name: {
+        type: String
+    },
+    age: {
+        type: Number
+    }
+})
