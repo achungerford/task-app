@@ -24,4 +24,9 @@ const me = new User({
     age: 27
 })
 
-// challenge: define bas
+// use methods to save the model instance into DB
+me.save().then(() => {
+    console.log(me);
+}).catch((error) => {
+    console.log('Error!', error);
+})
