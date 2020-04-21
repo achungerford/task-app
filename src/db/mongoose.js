@@ -17,3 +17,11 @@ const User = mongoose.model('User', {
         type: Number
     }
 })
+
+// create an instance of the model
+const me = new User({
+    name: 'John',
+    age: 27
+})
+
+// challenge: define bas
