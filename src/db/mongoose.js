@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 // connecting to database & including options object
 // mongodb protocol, local IP address, port: 27017, database name: task-app-api
@@ -12,10 +13,23 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-app-api', {
 const User = mongoose.model('User', {
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
+    },
+    email: {
+        type: String,
+        required: true,
+        trim: true,
+        lowercase: true,
+        validate(value) {
+            if (!validator.isEmail(value)) {
+                throw new Error('Email is invalid.');
+            }
+        }
     },
     age: {
         type: Number,
+        default: 0,
         validate(value) {
             if (value < 0) {
                 throw new Error('Age must be a positive number');
@@ -27,7 +41,7 @@ const User = mongoose.model('User', {
 // create an instance of the model
 const me = new User({
     name: 'John',
-    age: 27
+    email: ''
 })
 
 // use methods to save the model instance into DB
