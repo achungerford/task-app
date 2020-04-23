@@ -11,10 +11,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-app-api', {
 // define our first model - basic version of 'user' model
 const User = mongoose.model('User', {
     name: {
-        type: String
+        type: String,
+        required: true
     },
     age: {
-        type: Number
+        type: Number,
+        validate(value) {
+            if (value < 0) {
+                throw new Error('Age must be a positive number');
+            }
+        }
     }
 })
 
@@ -41,15 +47,15 @@ const Task = mongoose.model('Task', {
     }
 })
 
-// create instance of Task
-const task = new Task({
-    description: 'Learn Mongoose libary.',
-    completed: false
-})
+// // create instance of Task
+// const task = new Task({
+//     description: 'Learn Mongoose libary.',
+//     completed: false
+// })
 
-// use 'save()' method to save the instance into DB
-task.save().then(() => {
-    console.log(task);
-}).catch((error) => {
-    console.log(error);
-})
+// // use 'save()' method to save the instance into DB
+// task.save().then(() => {
+//     console.log(task);
+// }).catch((error) => {
+//     console.log(error);
+// })
