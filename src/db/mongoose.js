@@ -27,6 +27,17 @@ const User = mongoose.model('User', {
             }
         }
     },
+    password: {
+        type: String,
+        required: true,
+        minlength: 7,
+        trim: true,
+        validate(value) {
+            if (value.toLowerCase().includes('password')) {
+                throw new Error('Password cannon contain "password"');
+            }
+        }
+    },
     age: {
         type: Number,
         default: 0,
@@ -40,8 +51,9 @@ const User = mongoose.model('User', {
 
 // create an instance of the model
 const me = new User({
-    name: 'John',
-    email: ''
+    name: 'John      ',
+    email: '   MYEMAIL@MEAD.IO',
+    password: 'phone123'
 })
 
 // use methods to save the model instance into DB
@@ -51,15 +63,15 @@ me.save().then(() => {
     console.log('Error!', error);
 })
 
-// create Task model
-const Task = mongoose.model('Task', {
-    description: {
-        type: String
-    },
-    completed: {
-        type: Boolean
-    }
-})
+// // create Task model
+// const Task = mongoose.model('Task', {
+//     description: {
+//         type: String
+//     },
+//     completed: {
+//         type: Boolean
+//     }
+// })
 
 // // create instance of Task
 // const task = new Task({
