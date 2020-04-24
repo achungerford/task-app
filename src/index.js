@@ -10,8 +10,13 @@ app.use(express.json());
 
 // configure users route/endpoint
 app.post('/users', (req, res) => {
-    console.log(req.body);
-    res.send('testing');
+    const user = new User(req.body)
+
+    user.save().then(() => {
+
+    }).catch(() => {
+
+    })
 })
 
 app.listen(port, () => {
