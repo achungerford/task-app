@@ -3,8 +3,12 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// config express to parse incoming JSON from user automatically
+app.use(express.json());
+
 // configure users route/endpoint
 app.post('/users', (req, res) => {
+    console.log(req.body);
     res.send('testing');
 })
 
