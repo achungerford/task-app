@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 // connecting to database & including options object
 // mongodb protocol, local IP address, port: 27017, database name: task-app-api
@@ -8,22 +7,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-app-api', {
     useNewUrlParser: true,
     useCreateIndex: true
 })
-
-
-
-// // create an instance of the model
-// const me = new User({
-//     name: 'John      ',
-//     email: '   MYEMAIL@MEAD.IO',
-//     password: 'phone123'
-// })
-
-// // use methods to save the model instance into DB
-// me.save().then(() => {
-//     console.log(me);
-// }).catch((error) => {
-//     console.log('Error!', error);
-// })
 
 // create Task model
 const Task = mongoose.model('Task', {
