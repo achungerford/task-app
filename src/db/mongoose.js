@@ -21,15 +21,3 @@ const Task = mongoose.model('Task', {
         default: false
     }
 })
-
-// create instance of Task
-const task = new Task({
-    description: 'Learn Mongoose libary.'
-})
-
-// use 'save()' method to save the instance into DB
-task.save().then(() => {
-    console.log(task);
-}).catch((error) => {
-    console.log(error);
-})
