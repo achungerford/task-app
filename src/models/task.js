@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 // define our Task model
 const Task = mongoose.model('Task', {
