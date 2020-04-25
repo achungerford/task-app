@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 // config express to parse incoming JSON from user automatically
 app.use(express.json());
 
-// configure users route/endpoint
+// configure users route/endpoint - CREATE
 app.post('/users', (req, res) => {
     const user = new User(req.body)
 
@@ -20,7 +20,16 @@ app.post('/users', (req, res) => {
     })
 })
 
-// configure tasks route
+// configure users endpoint for finding multiple users - READ
+app.get('/users', (req, res) => {
+    User.find({}).then((users) => {
+        res.send(users);
+    }).catch((e) => {
+        res.status(500).send()
+    })
+})
+
+// configure tasks route - CREATE
 app.post('/tasks', (req, res) => {
     const task = new Task(req.body)
 
@@ -30,6 +39,10 @@ app.post('/tasks', (req, res) => {
         res.status(400).send(e);
     })
 })
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Server is up on ${port}`);
