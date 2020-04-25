@@ -25,7 +25,7 @@ app.post('/tasks', (req, res) => {
     const task = new Task(req.body)
 
     task.save().then(() => {
-        res.send(task);
+        res.status(201).send(task);
     }).catch((e) => {
         res.status(400).send(e);
     })
