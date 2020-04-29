@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-// define our first model - basic version of 'user' model
+// define a basic version of a model
+// model name: User
+// model schema: name, email, password, age
 const User = mongoose.model('User', {
     name: {
         type: String,
