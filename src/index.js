@@ -45,8 +45,6 @@ app.get('/users/:id', (req, res) => {
     }).catch((e) => {
         res.status(500).send()
     })
-    
-    console.log(req.params);
 })
 
 // ------------- Task -----------------------------
@@ -61,9 +59,6 @@ app.post('/tasks', (req, res) => {
         res.status(400).send(e);
     })
 })
-
-
-
 
 
 app.listen(port, () => {
