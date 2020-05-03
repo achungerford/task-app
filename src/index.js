@@ -9,8 +9,6 @@ const port = process.env.PORT || 3000;
 // config express to parse incoming JSON from user automatically
 app.use(express.json());
 
-// ----------------- User -------------------------
-
 // configure 'users' route/endpoint - CREATE
 app.post('/users', (req, res) => {
     const user = new User(req.body)
@@ -22,7 +20,7 @@ app.post('/users', (req, res) => {
     })
 })
 
-// configure 'users' route/endpoint for finding multiple users - READ
+// configure 'users' route - READ all users
 app.get('/users', (req, res) => {
     User.find({}).then((users) => {
         res.send(users);
@@ -31,7 +29,7 @@ app.get('/users', (req, res) => {
     })
 })
 
-// configure 'users' route/endpoint for fetching an individual user by id - READ
+// configure 'users' route - READ by id
 app.get('/users/:id', (req, res) => {
     const _id = req.params.id
 
@@ -43,13 +41,11 @@ app.get('/users/:id', (req, res) => {
         res.send(user);
 
     }).catch((e) => {
-        res.status(500).send()
+        res.status(500).send();
     })
 })
 
-// ------------- Task -----------------------------
-
-// configure 'tasks' route/endpoint - CREATE
+// configure tasks route - CREATE
 app.post('/tasks', (req, res) => {
     const task = new Task(req.body)
 
@@ -60,7 +56,32 @@ app.post('/tasks', (req, res) => {
     })
 })
 
+// config tasks route - READ
+app.get('/tasks', (req, res) => {
+    Task.find({}).then((tasks) => {
+        res.send(tasks);
+    }).catch((e) => {
+        res.status(500).send();
+    })
+})
 
+// config tasks route - READ by id
+app.get('/tasks/:id', (req, res) => {
+    const _id = req.params.id
+
+    Task.findById(_id).then((task) => {
+        if (!task) {
+            return res.status(404).send();
+        }
+
+        res.send(task);
+        
+    }).catch((e) => {
+        res.status(500).send();
+    })
+})
+
+// configure server to listen
 app.listen(port, () => {
     console.log(`Server is up on ${port}`);
 })
