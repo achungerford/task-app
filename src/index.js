@@ -6,7 +6,7 @@ const Task = require('./models/task');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// config express to parse incoming JSON from user automatically
+// parse incoming JSON from user automatically
 app.use(express.json());
 
 // configure 'users' route/endpoint - CREATE
