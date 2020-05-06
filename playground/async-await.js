@@ -1,4 +1,4 @@
-const doWork = () => {
+const doWork = async () => {
 
 }
 
