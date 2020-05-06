@@ -57,7 +57,7 @@ app.post('/tasks', (req, res) => {
 })
 
 // config tasks route - READ
-app.get('/tasks', (req, res) => {
+app.get('/tasks', (req, res) => {    
     Task.find({}).then((tasks) => {
         res.send(tasks);
     }).catch((e) => {
