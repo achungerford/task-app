@@ -16,8 +16,8 @@ const doWork = async () => {
     const sum = await add(1, 99)        // wait 2 seconds, 100
     const sum2 = await add(sum, 50)     // wait 2 seconds, 150
     const sum3 = await add(sum2, 3)     // wait 2 seconds, 153
-    return sum3;    // none of the numbers above appear; after 6 seconds we get 153
-}
+    return sum3;    // none of the numbers above appear until we console log the result after 6 seconds
+}                   // even if we didn't log it (lines 23-27) we would still have to wait the 6 seconds for the return
 
 // calling doWork using async-await instead of promise-chaining with multiple then-stmts
 doWork().then((result) => {
@@ -26,4 +26,5 @@ doWork().then((result) => {
     console.log('e', e);
 })
 
+// demonstrate that doWork returns a promise (try commenting out next line and re-run)
 console.log(doWork())
